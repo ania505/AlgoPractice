@@ -57,6 +57,7 @@ def search(first_name=None, last_name=None, address=None, tax_id=None):
                 matching = True
             else:
                 matching = False
+            # tried to replace the conditionals with a python ternary but didnt work
         if matching:
             # print(person['first_name'], 'added!')
             result.append(person)
