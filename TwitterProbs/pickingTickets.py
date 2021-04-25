@@ -12,6 +12,46 @@
 # These subsequences have m values of 3 and 2, respectively. 
 # Return 3.
 
+def maxTix(tickets):
+    sorty = sorted(tickets)
+    print(sorty)
+    i = 0
+    j = 1
+    bigSub = 0
+
+
+    while i < len(sorty) and j < len(sorty):
+        # 
+        if j+1 < len(sorty):
+            print(sorty[i], sorty[j], sorty[j+1])
+            if abs(sorty[j] - sorty[j+1]) == 0 or abs(sorty[j] - sorty[j+1]) == 1:
+                # i += 1
+                j += 1
+            else:
+                recentSub = abs(j-i) + 1
+                print('recent: ', recentSub, 'big: ', bigSub)
+                if recentSub > bigSub:
+                    bigSub = recentSub
+                i = j+1
+                if j < len(sorty):
+                    j += 1
+        else:
+            recentSub = abs(j-i) + 1
+            print('recent: ', recentSub, 'big: ', bigSub)
+            if recentSub > bigSub:
+                bigSub = recentSub
+            i = j+1
+            if j < len(sorty):
+                j += 1
+        
+    return bigSub
+    
+
+print('outputONE', maxTix([8, 5, 4, 8, 4]))     # should return 3
+print('outputTWO', maxTix([4, 13, 2, 3]))    # should return 3
+print('outputTHREE', maxTix([0, 1, 3, 4, 5, 6, 7, 12, 13, 14]))    # should return 5
+
+
 def maxTickets(tickets):
     sorty = sorted(tickets)
     # print(sorty)
@@ -45,4 +85,4 @@ def maxTickets(tickets):
 
 
 
-maxTickets([8, 5, 4, 8, 4])     # should return 3
+# maxTickets([8, 5, 4, 8, 4])     # should return 3
